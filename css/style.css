@@ -1,0 +1,177 @@
+#pageTitle{
+  font-size: 48px;
+  padding-left: 7%;
+  color: #333;
+}
+
+#itinerary{
+  font-size: 48px;
+  color: #333;
+}
+
+nav ul a{
+  display: none;
+}
+
+nav{
+  background-image: url(../images/denver-park2400x300.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+}
+
+.nav-wrapper ul{
+  padding-right: 7%;
+  display: block !important;
+}
+
+.nav-wrapper{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#descriptionDenver{
+  font-size: 20px;
+}
+
+#dropdown1{
+  width: auto !important;
+
+}
+
+select.show{
+  display: block;
+}
+
+#instructions{
+  overflow-y: scroll;
+}
+
+.card .card-title{
+  font-size: 32px;
+  font-weight: 400;
+
+}
+
+.card-content p{
+  font-size: 16px;
+}
+
+#destinationCardInstructions{
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  color: crimson;
+}
+
+
+#map{
+  height: 800px;
+  min-height: 600px;
+  flex: 60%;
+  display: inline-block;
+  padding: 20px;
+  margin: 20px 30px 30px 30px;
+}
+
+#instructions{
+  height: 800px;
+  min-height: 600px;
+  flex: 40%;
+  /* width:100%; */
+  display: inline-block;
+  margin: 20px;
+}
+
+#instructions input{
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+#mapInstructionsContainer{
+  display: flex;
+}
+
+#mapRadio{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 25%;
+  width: 100%;
+  min-width: fit-content;
+}
+
+#mapRadio input{
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  margin-left: 30px; 
+
+}
+
+#mapRadioTitle{
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+
+}
+
+#waypointButton, #generateItinerary, #newStartButton{
+  display: inline-block;
+  padding: 20px;
+  margin: 10px 30px;
+  max-width: 20%;
+  min-width: 385px;
+  border-radius: 12px;
+}
+
+#waypointButton{
+  color: crimson;
+  font-size:16px;
+}
+
+/* #newStartButton, #generateItinerary{
+  display: inline-block;
+  padding: 20px;
+  margin: 10px 10px;
+  max-width: 20%;
+  min-width: 390px; 
+  border-radius: 12px;
+} */
+
+h6{
+  font-weight: 400;
+}
+
+@media screen and (max-width: 850px){
+  #mapInstructionsContainer{
+    flex-direction: column;
+
+  }
+}
+
+@media screen and (max-width: 600px){
+#mapRadio{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.nav-wrapper{
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+#itinerary{
+  color: #fff;
+  padding-left: 9%;
+  
+}
+#waypointButton, #generateItinerary, #newStartButton{
+  padding: 20px 5px;
+  margin: 10px;
+  min-width: 300px;
+}
+}

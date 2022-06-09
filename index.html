@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/yelpStyle.css">
+  <style>
+    body {
+      background-image: url();
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+ </style>
+  <title>Visit Denver</title>
+</head>
+<body>
+
+<ul id="dropdown1" class="dropdown-content"></ul>
+<nav>
+  <div class="nav-wrapper">
+    <a id="pageTitle">Visit Denver!</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a id="itinerary" class="dropdown-trigger"  data-target="dropdown1">Itinerary<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <section>
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card-panel teal">
+          <h1 class="white-text">About Denver</h1>
+          <span id="descriptionDenver" class="white-text">Denver, the capital of Colorado, is an American metropolis dating to the Old West era. 
+            Larimer Square, the city’s oldest block, features landmark 19th-century buildings. 
+            Museums include the Denver Art Museum, an ultramodern complex known for its collection of indigenous works, and the mansion of famed Titanic survivor Molly Brown. Denver is also a jumping-off point for ski resorts in the nearby Rocky Mountains
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="row">
+      <div id="searchBox" class="col s12 l6">
+        <div class="card">
+          <div class="card-image">
+            <img src="img/curry.jpg" alt="">
+            <a href="" class="halfway-fab btn-floating pink pulse">
+              <i class="material-icons">favorite</i>
+            </a>
+          </div>
+          <div class="card-content">
+            <span class="card-title">Search for a starting location</span>
+            <p id="startingPointCardInstructions">Select your stating location here.  You can search for an address, or places like Denver Union Station or Denver Natural History Museum.  Please include the city for best search results!</p>
+            <div class="places-search">
+              <form id="searchBar">
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+              <select name="searchSelect" id="searchSelect"></select>
+            </div>
+          </div>      
+        </div>
+      </div>
+
+      <div id="destinationSearchBox" class="col s12 l6">
+        <div class="card">
+          <div class="card-image">
+            <img src="img/pasta.jpg" alt="">
+            <a href="" class="halfway-fab btn-floating pink pulse">
+              <i class="material-icons">favorite</i>
+            </a>
+          </div>
+          <div class="card-content">
+            <span id="destinationCardTitle" class="card-title">Search for your destination</span>
+            <p id="destinationCardInstructions">(You must first click the Start trip from my last (current) destination button.) </p>
+            <p>Search for a destination here.  You can search for an address or places like Denver Union Station or Denver Natural History Museum.  Please include the city for best search results!  You may also click on a location to set your destination</p>
+            <div class="nav-wrapper">
+              <form id="destination">
+                <div class="food-search">
+                  <input id="searchD" type="search" placeholder="Type to search..." required>
+                  <label class="label-icon" for="searchD"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+              <select name="searchSelectD" id="searchSelectD"></select>
+                  <!-- The Yelp Modal -->
+                <div id="myModal" class="modal">
+
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modalReviews">
+              
+                    </div>
+                  </div>
+
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+    </div>
+  </div>
+  <!-- Map radio buttons -->
+  <p id="mapRadioTitle">Select your mode of travel here:</p>
+  <div id="mapRadio">
+    <div><input name="mapRadio" type="radio" value="driving-traffic">&nbsp;&nbsp;Driving Traffic</div>
+    <div><input name="mapRadio" type="radio" value="driving" checked>&nbsp;&nbsp;Driving</div>
+    <div><input name="mapRadio" type="radio" value="cycling">&nbsp;&nbsp;Cycling</div>
+    <div><input name="mapRadio" type="radio" value="walking">&nbsp;&nbsp;Walking</div>
+  </div>
+  <!-- Buttons to set another trip, clear the directions in the instructions div and generate the itinerary -->
+  <button id="waypointButton" type="button">Start trip from my last (current) destination</button>
+  <button id="newStartButton" type="button">Click to clear directions</button>
+  <button id="generateItinerary">Click to generate an itinerary</button>
+  <!-- Map and directions container (flex to support responsive design) -->
+  <div id="mapInstructionsContainer">
+    <div id="map"></div>
+    <div id="instructions"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./script/script.js"></script>
+  <script src="./script/mapboxAPI.js"></script>
+  <script src="./script/yelpAPI.js"></script>
+</body>
+</html>
